@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root{
+  --pink-1: #ff69b4;
+  --pink-2: #ff4da6;
+  --accent: #fff3fb;
+  --muted: #6b7280;
+}
+*{box-sizing:border-box}
+body{
+  font-family: 'Poppins', Arial, sans-serif;
+  margin:0;
+  background: linear-gradient(180deg, #fff0f6 0%, #fff 100%);
+  color:#222;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Home page: center content vertically and horizontally */
+body.home{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+body.home .container{ /* remove extra margin when centered */
+  margin:0;
+}
+.site-header{
+  background: linear-gradient(90deg,var(--pink-2),var(--pink-1));
+  color:white;
+  padding:18px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.brand{font-weight:700;font-size:20px;letter-spacing:0.4px}
+.nav a{color:white;text-decoration:none;margin-left:14px;font-weight:600}
+.container{max-width:960px;margin:28px auto;padding:20px;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,250,255,0.9));border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.06)}
+h1,h2{color:#6b1a4a}
+.top-actions{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.btn{display:inline-block;padding:8px 12px;background:var(--pink-2);color:#fff;text-decoration:none;border-radius:8px;font-weight:600}
+.btn.secondary{background:transparent;border:2px solid #ffb6d9;color:var(--pink-2)}
+table{width:100%;border-collapse:collapse;background:white;border-radius:6px;overflow:hidden}
+th,td{padding:12px 14px;border-bottom:1px solid #f3e6ef;text-align:left}
+th{background:linear-gradient(180deg,#fff 0%, #fff3fb 100%);color:#8b163f}
+tr:last-child td{border-bottom:none}
+form label{display:block;margin-top:10px;font-weight:600;color:#6b1a4a}
+input[type=text], input[type=number], input[type=password], textarea, select{width:100%;padding:10px;border-radius:8px;border:1px solid #f0cde0;margin-top:6px}
+.error{color:#b00020;background:#fff0f3;padding:8px;border-radius:6px}
+.success{color:#1b7a1b;background:#f0f8f0;padding:8px;border-radius:6px}
+.footer{text-align:center;color:var(--muted);font-size:13px;margin-top:18px}
