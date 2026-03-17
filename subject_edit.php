@@ -1,7 +1,6 @@
 <?php
 include 'auth.php';
 require_role(['admin','staff']);
-include 'db.php';
 $errors = [];
 
 $subject_id = isset($_GET['subject_id']) ? intval($_GET['subject_id']) : 0;

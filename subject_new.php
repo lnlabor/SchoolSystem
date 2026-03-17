@@ -1,7 +1,6 @@
 <?php
 include 'auth.php';
 require_role(['admin','staff']);
-include 'db.php';
 $errors = [];
 $code = '';
 $title = '';

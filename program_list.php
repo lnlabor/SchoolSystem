@@ -1,7 +1,6 @@
 <?php
 include 'auth.php';
 require_login();
-include 'db.php';
 $result = $conn->query("SELECT program_id AS id, code, title, years FROM program ORDER BY program_id ASC");
 ?>
 <!doctype html>

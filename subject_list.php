@@ -1,7 +1,6 @@
 <?php
 include 'auth.php';
 require_login();
-include 'db.php';
 $result = $conn->query("SELECT subject_id AS id, code, title, unit FROM subject ORDER BY subject_id ASC");
 ?>
 <!doctype html>

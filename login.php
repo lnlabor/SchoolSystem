@@ -13,20 +13,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     if($username === '' || $password === ''){
         $error = 'Username and password are required.';
     } else {
-        $stmt = $conn->prepare('SELECT id, username, password, account_type FROM users WHERE username = ? LIMIT 1');
-        $stmt->bind_param('s', $username);
-        $stmt->execute();
-        $res = $stmt->get_result();
-        if($res && $res->num_rows === 1){
-            $u = $res->fetch_assoc();
-            if(password_verify($password, $u['password'])){
-                // login
-                session_regenerate_id(true);
-                $_SESSION['user_id'] = $u['id'];
-                $_SESSION['username'] = $u['username'];
-                $_SESSION['account_type'] = $u['account_type'];
-                header('Location: home.php'); exit;
-            }
+        if(Auth::login($username, $password)){
+            header('Location: home.php'); exit;
         }
         $error = 'Invalid username or password.';
     }
