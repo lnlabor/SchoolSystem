@@ -12,7 +12,7 @@
 // PSR-4 Autoloader
 spl_autoload_register(function ($class) {
     // Base directory for the namespace prefix
-    $base_dir = __DIR__ . '/';
+    $base_dir = __DIR__ . '/app/';
 
     // Does the class use the namespace prefix?
     $len = strlen('App\\');
