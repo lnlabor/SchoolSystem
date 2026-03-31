@@ -34,5 +34,8 @@ spl_autoload_register(function ($class) {
     }
 });
 
+// Load application config
+require_once __DIR__ . '/config/config.php';
+
 // Initialize session
 \App\Core\SessionManager::start();

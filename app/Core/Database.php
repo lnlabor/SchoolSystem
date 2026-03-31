@@ -25,18 +25,19 @@ class Database
      */
     private function __construct()
     {
-        $this->conn = new \mysqli(
-            self::DB_HOST,
-            self::DB_USER,
-            self::DB_PASS,
-            self::DB_NAME
-        );
+        $host = defined('DB_HOST') ? DB_HOST : self::DB_HOST;
+        $user = defined('DB_USER') ? DB_USER : self::DB_USER;
+        $pass = defined('DB_PASS') ? DB_PASS : self::DB_PASS;
+        $name = defined('DB_NAME') ? DB_NAME : self::DB_NAME;
+        $charset = defined('DB_CHARSET') ? DB_CHARSET : self::DB_CHARSET;
+
+        $this->conn = new \mysqli($host, $user, $pass, $name);
 
         if ($this->conn->connect_error) {
             throw new \Exception('Database connection error: ' . $this->conn->connect_error);
         }
 
-        $this->conn->set_charset(self::DB_CHARSET);
+        $this->conn->set_charset($charset);
     }
 
     /**
