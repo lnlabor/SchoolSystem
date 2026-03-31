@@ -25,7 +25,7 @@ class Redirect
      */
     public static function home(): void
     {
-        self::to('/public/home.php');
+        self::to('index.php?controller=home&action=index');
     }
 
     /**
@@ -33,7 +33,7 @@ class Redirect
      */
     public static function login(): void
     {
-        self::to('/public/login.php');
+        self::to('index.php?controller=auth&action=login');
     }
 
     /**
@@ -41,7 +41,7 @@ class Redirect
      * 
      * @param string $default
      */
-    public static function back(string $default = '/public/home.php'): void
+    public static function back(string $default = 'index.php?controller=home&action=index'): void
     {
         $referer = $_SERVER['HTTP_REFERER'] ?? $default;
         self::to($referer);

@@ -27,7 +27,7 @@
             </div>
         <?php endif; ?>
 
-        <form method="post" action="<?php echo isset($id) ? 'users_edit.php?id=' . intval($id) : 'users_new.php'; ?>">
+        <form method="post" action="<?php echo isset($id) ? 'index.php?controller=user&action=edit&id=' . intval($id) : 'index.php?controller=user&action=new'; ?>">
             <label>Username
                 <input type="text" name="username" value="<?php echo htmlspecialchars($username); ?>" required>
             </label>

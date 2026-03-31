@@ -33,7 +33,7 @@
                         <td><?php echo htmlspecialchars($row['account_type']); ?></td>
                         <td><?php echo htmlspecialchars($row['created_on']); ?></td>
                         <td><?php echo htmlspecialchars($row['updated_on']); ?></td>
-                        <td><a href="users_edit.php?id=<?php echo intval($row['id']); ?>">Edit</a></td>
+                        <td><a href="index.php?controller=user&action=edit&id=<?php echo intval($row['id']); ?>">Edit</a></td>
                     </tr>
                 <?php endwhile; ?>
             <?php else: ?>

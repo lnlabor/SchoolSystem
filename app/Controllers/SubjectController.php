@@ -51,7 +51,7 @@ class SubjectController extends BaseController
                 $subject = new Subject();
                 if ($subject->create($code, $title, floatval($unit))) {
                     SessionManager::setSuccess('Subject created successfully!');
-                    Redirect::to('subject_list.php');
+                    Redirect::to('index.php?controller=subject&action=list');
                 } else {
                     $errors[] = 'Database error: could not save subject.';
                 }
@@ -64,7 +64,7 @@ class SubjectController extends BaseController
             'code' => $code,
             'title' => $title,
             'unit' => $unit,
-            'back' => 'subject_list.php'
+            'back' => 'index.php?controller=subject&action=list'
         ]);
     }
 
@@ -75,7 +75,7 @@ class SubjectController extends BaseController
         $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
         if ($id <= 0) {
             SessionManager::setError('Invalid subject ID.');
-            Redirect::to('subject_list.php');
+            Redirect::to('index.php?controller=subject&action=list');
         }
 
         $subjectModel = new Subject();
@@ -83,7 +83,7 @@ class SubjectController extends BaseController
 
         if (!$result || $result->num_rows === 0) {
             SessionManager::setError('Subject not found.');
-            Redirect::to('subject_list.php');
+            Redirect::to('index.php?controller=subject&action=list');
         }
 
         $subject = $result->fetch_assoc();
@@ -110,7 +110,7 @@ class SubjectController extends BaseController
             if (empty($errors)) {
                 if ($subjectModel->update($id, $code, $title, floatval($unit))) {
                     SessionManager::setSuccess('Subject updated successfully!');
-                    Redirect::to('subject_list.php');
+                    Redirect::to('index.php?controller=subject&action=list');
                 } else {
                     $errors[] = 'Database error: could not update subject.';
                 }
@@ -124,7 +124,7 @@ class SubjectController extends BaseController
             'title' => $title,
             'unit' => $unit,
             'id' => $id,
-            'back' => 'subject_list.php'
+            'back' => 'index.php?controller=subject&action=list'
         ]);
     }
 }

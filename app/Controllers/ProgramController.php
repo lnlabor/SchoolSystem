@@ -51,7 +51,7 @@ class ProgramController extends BaseController
                 $program = new Program();
                 if ($program->create($code, $title, intval($years))) {
                     SessionManager::setSuccess('Program created successfully!');
-                    Redirect::to('program_list.php');
+                    Redirect::to('index.php?controller=program&action=list');
                 } else {
                     $errors[] = 'Database error: could not save program.';
                 }
@@ -64,7 +64,7 @@ class ProgramController extends BaseController
             'code' => $code,
             'title' => $title,
             'years' => $years,
-            'back' => 'program_list.php'
+            'back' => 'index.php?controller=program&action=list'
         ]);
     }
 
@@ -75,7 +75,7 @@ class ProgramController extends BaseController
         $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
         if ($id <= 0) {
             SessionManager::setError('Invalid program ID.');
-            Redirect::to('program_list.php');
+            Redirect::to('index.php?controller=program&action=list');
         }
 
         $programModel = new Program();
@@ -83,7 +83,7 @@ class ProgramController extends BaseController
 
         if (!$result || $result->num_rows === 0) {
             SessionManager::setError('Program not found.');
-            Redirect::to('program_list.php');
+            Redirect::to('index.php?controller=program&action=list');
         }
 
         $program = $result->fetch_assoc();
@@ -110,7 +110,7 @@ class ProgramController extends BaseController
             if (empty($errors)) {
                 if ($programModel->update($id, $code, $title, intval($years))) {
                     SessionManager::setSuccess('Program updated successfully!');
-                    Redirect::to('program_list.php');
+                    Redirect::to('index.php?controller=program&action=list');
                 } else {
                     $errors[] = 'Database error: could not update program.';
                 }
@@ -124,7 +124,7 @@ class ProgramController extends BaseController
             'title' => $title,
             'years' => $years,
             'id' => $id,
-            'back' => 'program_list.php'
+            'back' => 'index.php?controller=program&action=list'
         ]);
     }
 }

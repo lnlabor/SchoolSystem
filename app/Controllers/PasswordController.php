@@ -45,7 +45,7 @@ class PasswordController extends BaseController
                 } else {
                     if ($userModel->changePassword($userId, $new)) {
                         SessionManager::setSuccess('Password updated successfully.');
-                        Redirect::to('home.php');
+                        Redirect::to('index.php?controller=home&action=index');
                     } else {
                         $errors[] = 'Database error: could not update password.';
                     }

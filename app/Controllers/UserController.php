@@ -64,7 +64,7 @@ class UserController extends BaseController
             if (empty($errors)) {
                 if ($userModel->create($username, $password, $accountType)) {
                     $this->setSuccess('User created successfully!');
-                    Redirect::to('users_list.php');
+                    Redirect::to('index.php?controller=user&action=list');
                 } else {
                     $errors[] = 'Database error: could not create user.';
                 }
@@ -77,7 +77,7 @@ class UserController extends BaseController
             'username' => $username,
             'accountType' => $accountType,
             'roles' => $roles,
-            'back' => 'users_list.php'
+            'back' => 'index.php?controller=user&action=list'
         ]);
     }
 
@@ -88,7 +88,7 @@ class UserController extends BaseController
         $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
         if ($id <= 0) {
             $this->setError('Invalid user ID.');
-            Redirect::to('users_list.php');
+            Redirect::to('index.php?controller=user&action=list');
         }
 
         $userModel = new User();
@@ -96,7 +96,7 @@ class UserController extends BaseController
 
         if (!$result || $result->num_rows === 0) {
             $this->setError('User not found.');
-            Redirect::to('users_list.php');
+            Redirect::to('index.php?controller=user&action=list');
         }
 
         $userData = $result->fetch_assoc();
@@ -126,7 +126,7 @@ class UserController extends BaseController
             if (empty($errors)) {
                 if ($userModel->update($id, $username, $accountType)) {
                     $this->setSuccess('User updated successfully!');
-                    Redirect::to('users_list.php');
+                    Redirect::to('index.php?controller=user&action=list');
                 } else {
                     $errors[] = 'Database error: could not update user.';
                 }
@@ -140,7 +140,7 @@ class UserController extends BaseController
             'accountType' => $accountType,
             'roles' => $roles,
             'id' => $id,
-            'back' => 'users_list.php'
+            'back' => 'index.php?controller=user&action=list'
         ]);
     }
 }

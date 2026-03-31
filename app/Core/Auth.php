@@ -119,7 +119,7 @@ class Auth
     public static function requireLogin(): void
     {
         if (!self::isLoggedIn()) {
-            header('Location: /public/login.php');
+            \App\Helpers\Redirect::login();
             exit;
         }
     }
@@ -132,7 +132,7 @@ class Auth
         self::requireLogin();
         if (!self::isAdmin()) {
             SessionManager::setError('Access denied. Admin role required.');
-            header('Location: /public/home.php');
+            \App\Helpers\Redirect::home();
             exit;
         }
     }
@@ -147,7 +147,7 @@ class Auth
         self::requireLogin();
         if (!self::hasRole($roles)) {
             SessionManager::setError('Access denied. You do not have permission to access this resource.');
-            header('Location: /public/home.php');
+            \App\Helpers\Redirect::home();
             exit;
         }
     }

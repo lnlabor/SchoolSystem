@@ -27,7 +27,7 @@
             </div>
         <?php endif; ?>
 
-        <form method="post" action="<?php echo isset($id) ? 'subject_edit.php?id=' . intval($id) : 'subject_new.php'; ?>">
+        <form method="post" action="<?php echo isset($id) ? 'index.php?controller=subject&action=edit&id=' . intval($id) : 'index.php?controller=subject&action=new'; ?>">
             <label>Code
                 <input type="text" name="code" value="<?php echo htmlspecialchars($code); ?>" required>
             </label>

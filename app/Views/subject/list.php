@@ -35,7 +35,7 @@
                         <td><?php echo htmlspecialchars($row['unit']); ?></td>
                         <td>
                             <?php if ($canEdit): ?>
-                                <a href="subject_edit.php?id=<?php echo intval($row['id']); ?>">Edit</a>
+                                <a href="index.php?controller=subject&action=edit&id=<?php echo intval($row['id']); ?>">Edit</a>
                             <?php else: ?>
                                 -
                             <?php endif; ?>
